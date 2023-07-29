@@ -1,11 +1,13 @@
 Client View
     []HTML
-        []task input field
-             []submit task button
-        []task table
-           []table headers
-                []task, completed, delete
-            []table row
+        [x]source in jquery, js files
+        [x]link css
+        [x]task input field
+             [x]submit task button
+        [x]task table
+           [x]table headers
+                [x]task, completed, delete
+            []table row - is this all created in client.js?
                 []task
                 []completed task check-box(is this a button?)
                 []delete task button
@@ -35,19 +37,19 @@ Client Logic
                 []task data id setter
 
 Server Logic
-    []server.js
-        []require express
-        []require bodyparser
+    [x]server.js
+        [x]require express
+        [x]require bodyparser
         []require(?)pg
-        []set up body parser
-        []set up static assets
-        []set up task router
-        []start express
+        [x]set up body parser
+        [x]set up static assets
+        [x]set up task router
+        [x]start express
     []task.router.js
-            []require express
-            []set up express router
-            []require pool for DB connection
-            []module exports router
+            [x]require express
+            [x]set up express router
+            [x]require pool for DB connection
+            [x]module exports router
         []router.post
             []declare req.body variables
             []declare query params
