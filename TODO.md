@@ -51,7 +51,7 @@ Server Logic
             [x]require pool for DB connection
             [x]module exports router
         []router.post
-            []declare req.body variables
+            [x]declare req.body variables
             []declare query params
             []declare query text
             []pool query with text and params
@@ -62,17 +62,17 @@ Server Logic
             []declare query text that targets task id and updates completed status
             []pool query with text and params
         []router.get 
-            []declare query text to select tasks from table
-            []pool query with text 
+            [x]declare query text to select tasks from table
+            [x]pool query with text 
         []router.delete
             []declare variable to get id from params
             []declare querytext to delete task in DB
             []pool query with text and task id
 
 Database
-    []create new db weekend-to-do-app
-        []create table "to-dos"
-            []insert mock data
+    [x]create new db weekend-to-do-app
+        [x]create table "to-dos"
+            [x]insert mock data
     []create database.sql
         []copy paste create table queries
         
