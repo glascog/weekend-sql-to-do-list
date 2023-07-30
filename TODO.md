@@ -20,7 +20,7 @@ Client Logic
         [x]addTask
             [x]sends new task as object to server
             [x]ajax POST request
-            []renders new task to DOM (getTask)
+            [x]renders new task to DOM (getTask)
             [x]clears task input field
         []completeTask
             []getter for completed task id
@@ -30,11 +30,11 @@ Client Logic
             []getter for id of deleted task
             []ajax DELETE request to server
             []retrieve and render latest version of task table(getTask)
-        []getTask
-            []jquery to empty old version of task table
-            []ajax GET request to get task data from server
-            []for loop to append task data to dom
-                []task data id setter
+        [x]getTask
+            [x]jquery to empty old version of task table
+            [x]ajax GET request to get task data from server
+            [x]for loop to append task data to dom
+                [x]task data id setter
 
 Server Logic
     [x]server.js

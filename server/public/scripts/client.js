@@ -6,11 +6,31 @@ getTasks();
 
     //------ Handlers go here
 $('#add').on('click', addTask);
-
+$('.chk-Complete').on('click', completeTask);
 }
 let tasks;
 
 //------ Functions go here
+
+// PUT request to update completion status of task
+function completeTask() {
+    const taskId = $(this).parent().parent().data('id')
+    console.log('will update completion status with id:', taskId)
+    
+
+    // ajax request to use route 'tasks/updatestatus/:id'
+    $.ajax({
+        method: 'PUT',
+        url: `tasks/updatestatus/${taskId}`
+    })
+    .then((response) => {
+        console.log("Success for id:", taskId)
+        getTasks()
+    })
+    .catch((error) => {
+        console.log(error)
+    })
+}
 
 // GET request to retrieve data from server
 function getTasks() {
@@ -22,7 +42,7 @@ function getTasks() {
     .then((response) => {
         console.log(response);
         tasks = response;
-        renderTasks();
+        renderTasks(tasks);
     })
     .catch((error) => {
         console.log('error in GET', error);
@@ -44,7 +64,7 @@ function addTask() {
     })
     .then((response) => {
         $('#taskIn').val('')
-        renderTasks()
+        getTasks()
     })
     .catch((error) =>{
         console.log('error in POST:', error)
