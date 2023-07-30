@@ -1,17 +1,41 @@
 $(document).ready(onReady);
 
 function onReady() {
-//------ Handlers go here
+// render updated task list to dom upon loading
+getTasks();
+
+    //------ Handlers go here
 $('#add').on('click', addTask);
 
 }
+let tasks;
 
 //------ Functions go here
+
+// GET request to retrieve data from server
+function getTasks() {
+    console.log('in getTasks')
+    $.ajax({
+        type: 'GET',
+        url: '/tasks'
+    })
+    .then((response) => {
+        console.log(response);
+        tasks = response;
+        renderTasks();
+    })
+    .catch((error) => {
+        console.log('error in GET', error);
+    })
+} // end getTasks
+
+// -----------------
 
 // POST request for adding a task
 function addTask() {
     let newTask = {
-        task: $('#taskIn').val()
+        task: $('#taskIn').val(),
+        isCompleted: false
     }
     $.ajax({
         type: 'POST',
@@ -20,9 +44,35 @@ function addTask() {
     })
     .then((response) => {
         $('#taskIn').val('')
-        // render function (or, getTasks?) goes here
+        renderTasks()
     })
     .catch((error) =>{
         console.log('error in POST:', error)
     })
+}
+
+// ----------------
+
+function renderTasks() {
+    $('#taskTableBody').empty();    
+        for (let task of tasks){
+        // for (let i = 0; i < tasks.length; i += 1) {
+        //     let task = tasks[i];
+        let newRow = $(`
+            <tr>
+                <td>${task.task}</td>
+                <td><input type="checkbox" class="chk-Complete">
+                </checkbox>
+                </td>
+                <td>
+                    <button class="btn-Delete">
+                    Delete
+                    </button>
+                </td>
+            `)
+
+            // id setter
+            newRow.data('id', task.id)
+            $('#taskTableBody').append(newRow);
+    }
 }
