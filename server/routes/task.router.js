@@ -1,23 +1,23 @@
 const express = require('express');
 const router = express.Router();
+// Connect to DB
 const pool = require('../modules/pool.js')
 
 // GET route for getting tasks, with id, from DB
 router.get('/', (req, res) => {
     // to use with query params
-    const idToGet = [req.params.id]
+    // const idToGet = [req.params.id]
      // query to select all tasks from to-dos table
     const queryText =  `
     SELECT * FROM "to-dos";`
 
     // use pool to connect with DB
-    pool.query(queryText, idToGet)
+    pool.query(queryText) //idToGet
         .then((result) => {
             console.log(result)
             res.send(result.rows)
         })
         .catch((error) => {
-            alert("Failed to retrieve task: id=", idToGet[0])
             console.log("Error on GET '/tasks'", error )
             res.sendStatus(500)
         })
@@ -41,7 +41,7 @@ router.post('/', (req, res) => {
             res.sendStatus(201);
         })
         .catch((error) => {
-            console.log('Error on POST,' error)
+            console.log(error)
             res.sendStatus(500)
         })
 })
@@ -69,7 +69,23 @@ router.put('/updatestatus/:id', (req, res) => {
             console.log(error)
             res.sendStatus(500)
         })
+})
 
+// DELETE route to delete task by taking in param for id
+router.delete('/deleteTask/:id', (req, res) => {
+    let taskToDeleteId = req.params.id
+
+    let queryText = 'DELETE FROM "to-dos" WHERE id = $1;'
+
+    pool.query(queryText, [taskToDeleteId])
+        .then((result) => {
+            console.log("Task Deleted, id:", taskToDeleteId)
+            res.sendStatus(200)
+        })
+        .catch((error) => {
+            console.log('Error on DELETE:', error)
+            res.sendStatus(500)
+        })
 })
 
 
