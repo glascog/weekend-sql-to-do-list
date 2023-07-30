@@ -72,7 +72,7 @@ router.put('/updatestatus/:id', (req, res) => {
 })
 
 // DELETE route to delete task by taking in param for id
-router.delete('/deleteTask/:id', (req, res) => {
+router.delete('/deletetask/:id', (req, res) => {
     let taskToDeleteId = req.params.id
 
     let queryText = 'DELETE FROM "to-dos" WHERE id = $1;'

@@ -6,11 +6,30 @@ getTasks();
 
     //------ Handlers go here
 $('#add').on('click', addTask);
-$('.chk-Complete').on('click', completeTask);
+$('#taskTableBody').on('click','.chk-Complete', completeTask);
+$('#taskTableBody').on('click', '.btn-Delete', deleteTask);
 }
 let tasks;
 
 //------ Functions go here
+
+// DELETE request to delete tasks from the dom and DB
+function deleteTask() {
+    console.log('You clicked on', $(this));
+    const taskId = $(this).parent().parent().data('id')
+    console.log('in deleteTask: id is:', taskId)
+
+    // ajax request to use route 'tasks/deletetask/:id'
+    $.ajax({
+        method: 'DELETE',
+        url: `/tasks/deletetask/${taskId}`
+    })
+    .then((response) => {
+        console.log(`Deleted task id: ${taskId}`)
+        getTasks()
+    })
+
+}
 
 // PUT request to update completion status of task
 function completeTask() {
