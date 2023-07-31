@@ -2,7 +2,7 @@ body {
     margin: 50px;
     background: linear-gradient(to right, #1a1a1a, #303030);
     color:white;
-    font-family: 'Courier New', monospace;
+    font-family:'Courier New', Courier, monospace;
 }
 
 
