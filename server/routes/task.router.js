@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
     // const idToGet = [req.params.id]
      // query to select all tasks from to-dos table
     const queryText =  `
-    SELECT * FROM "to-dos";`
+    SELECT * FROM "to-dos" ORDER BY "id" DESC;`
 
     // use pool to connect with DB
     pool.query(queryText) //idToGet

@@ -7,6 +7,7 @@ getTasks();
     //------ Handlers go here
 $('#add').on('click', addTask);
 $('#taskTableBody').on('click','.chk-Complete', completeTask);
+// $('#taskTableBody').on('checked', '.chk-Complete', completeTask)
 $('#taskTableBody').on('click', '.btn-Delete', deleteTask);
 }
 let tasks;
@@ -32,7 +33,8 @@ function deleteTask() {
 }
 
 // PUT request to update completion status of task
-function completeTask() {
+function completeTask(event) {
+    event.preventDefault();
     const taskId = $(this).parent().parent().data('id')
     console.log('will update completion status with id:', taskId)
     
@@ -97,10 +99,14 @@ function renderTasks() {
         for (let task of tasks){
         // for (let i = 0; i < tasks.length; i += 1) {
         //     let task = tasks[i];
+        let isChecked;
+        if(task.isCompleted === true) {
+            isChecked = `checked`
+        }
         let newRow = $(`
             <tr>
                 <td>${task.task}</td>
-                <td><input type="checkbox" class="chk-Complete">
+                <td><input type="checkbox" class="chk-Complete" ${isChecked}>
                 </checkbox>
                 </td>
                 <td>
@@ -113,5 +119,6 @@ function renderTasks() {
             // id setter
             newRow.data('id', task.id)
             $('#taskTableBody').append(newRow);
+
     }
 }

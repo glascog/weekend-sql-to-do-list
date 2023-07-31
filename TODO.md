@@ -7,29 +7,29 @@ Client View
         [x]task table
            [x]table headers
                 [x]task, completed, delete
-            []table row - is this all created in client.js?
+            <!-- []table row - is this all created in client.js? - YES
                 []task
                 []completed task check-box(is this a button?)
-                []delete task button
+                []delete task button -->
 Client Logic
     []Handlers
         [x]listener for task submit button
-        []listener for completed check-box
-        []listener for delete button
+        [x]listener for completed check-box
+        [x]listener for delete button
     []Functions
         [x]addTask
             [x]sends new task as object to server
             [x]ajax POST request
             [x]renders new task to DOM (getTask)
             [x]clears task input field
-        []completeTask
-            []getter for completed task id
-            []ajax PUT to update completed task in server
-            []retrieve and render new status to dom(getTask)
-        []deleteTask
-            []getter for id of deleted task
-            []ajax DELETE request to server
-            []retrieve and render latest version of task table(getTask)
+        [x]completeTask
+            [x]getter for completed task id
+            [x]ajax PUT to update completed task in server
+            [x]retrieve and render new status to dom(getTask)
+        [x]deleteTask
+            [x]getter for id of deleted task
+            [x]ajax DELETE request to server
+            [x]retrieve and render latest version of task table(getTask)
         [x]getTask
             [x]jquery to empty old version of task table
             [x]ajax GET request to get task data from server
@@ -73,7 +73,7 @@ Database
     [x]create new db weekend-to-do-app
         [x]create table "to-dos"
             [x]insert mock data
-    []create database.sql
-        []copy paste create table queries
+    [x]create database.sql
+        [x]copy paste create table queries
         
        
