@@ -10,7 +10,7 @@ if(process.env.DATABASE_URL) {
     }
 }
 else pool = new pg.Pool({
-    database: 'weekendtodoapp',
+    database: 'weekendtodoapp_6g08',
     host: 'localhost',
     port: 5432
 })
