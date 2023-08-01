@@ -12,10 +12,10 @@ app.use(express.static('server/public'));
 // Set up the task router to respond to requests from the `/tasks` URL
 let taskRouter = require('./routes/task.router');
 app.use('/tasks', taskRouter);
-
+// require(dotenv).config()
 
 // Start express
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log('Listening on port', PORT);
 });

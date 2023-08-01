@@ -1,9 +1,16 @@
 // set up pool connection
 
 const pg = require('pg') // importing the pg package from node_modules
+let pool;
 
-const pool = new pg.Pool({
-    database: 'weekend-to-do-app',
+if(process.env.DATABASE_URL) {
+    connectionString: process.env.DATABASE_URL;
+    ssl: {
+        rejectUnauthorized: false
+    }
+}
+else pool = new pg.Pool({
+    database: 'weekendtodoapp',
     host: 'localhost',
     port: 5432
 })
